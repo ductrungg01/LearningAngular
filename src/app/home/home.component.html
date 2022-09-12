@@ -2,8 +2,7 @@
     <h2>Đây là Home component</h2>
     <p>Dòng thứ 2 của Home</p>
     <h3>Hi {{ name }}</h3>
-    <input value="{{ name }}">
+    <input type="text" [(ngModel)]="name"/>
     <br>
-    <h2 *ngIf="age > 18">You are old</h2>
-    <h2 *ngIf="age <= 18">You are young</h2>
+    <button (click)="resetName()">Reset tên</button>
 </div>
