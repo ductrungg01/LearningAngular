@@ -4,5 +4,6 @@
     <h3>Hi {{ name }}</h3>
     <input value="{{ name }}">
     <br>
-    <input [value]="name" title="Day la name">
+    <h2 *ngIf="age > 18">You are old</h2>
+    <h2 *ngIf="age <= 18">You are young</h2>
 </div>
