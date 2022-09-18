@@ -16,6 +16,17 @@ export class HomeComponent implements OnInit {
     {ten: 'Cam', gia: -50.10, haGia: false},
     {ten: 'Quýt', gia: 6000, haGia: true},
   ];
+  public vietnamData = [
+    {city: 'Chọn tỉnh/thành phố', district: ['Chọn quận/huyện']},
+    {city: 'An Giang',
+    district: ["Thành phố Long Xuyên","Thành phố Châu Đốc","Thị xã Tân Châu","Huyện An Phú","Huyện Châu Phú","Huyện Châu Thành","Huyện Chợ Mới","Huyện Phú Tân","Huyện Thoại Sơn","Huyện Tịnh Biên","Huyện Tri Tôn"
+    ]},
+    {
+      city: 'Bà Rịa - Vũng Tàu',
+      district: ["Thành phố Vũng Tàu","Thị xã Bà Rịa","Thị xã Phú Mỹ","Huyện Châu Đức","Huyện Côn Đảo","Huyện Đất Đỏ","Huyện Long Điền","Huyện Tân Thành","Huyện Xuyên Mộc"]
+    }
+  ];
+  public districts: string[] = [];
 
   constructor() { }
 
@@ -28,4 +39,19 @@ export class HomeComponent implements OnInit {
     this.name = '';
   }
 
+  public changeCity(event: any){
+    const city = event.target.value;
+
+    if (!city) return;
+
+    // Cách 1
+    // console.log('event', city);
+    // const search = this.vietnamData.filter(data => data.city === city);
+    // if (search && search.length > 0){
+    //   this.districts = search[0].district;
+    // }
+
+    // cách 2
+    this.districts = this.vietnamData.find(data => data.city === city)?.district || [];
+  }
 }
