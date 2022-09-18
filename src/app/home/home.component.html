@@ -1,6 +1,29 @@
 <div class="test">   
     <h2>Đây là Home component</h2>
     <div *ngFor = "let item of traiCay; let i = index">
-        <h4>{{i + 1}}. {{item}}</h4>
+        <h4>{{i + 1}}. {{item.ten}}</h4>
     </div>
+    <br>
+    <table class="table">
+        <tr>
+            <th>STT</th>
+            <th>Tên</th>
+            <th>Giá</th>
+            <th style="width: 300px !important;">Hạ giá</th>
+        </tr>
+        <tr *ngFor = "let item of traiCay; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{ item.ten }}</td>
+            <td class="right">
+                <span [ngClass]="{ 'so-am' : item.gia < 0}">
+                    {{ item.gia.toString() }}
+                </span>
+            </td>
+            <td [ngClass]="{ 'ha-gia' : item.haGia === true}" style="width: 300px;">
+                <span *ngIf="item.haGia">
+                    Đang giảm giá!!!
+                </span>
+            </td>
+        </tr>
+    </table>
 </div>
